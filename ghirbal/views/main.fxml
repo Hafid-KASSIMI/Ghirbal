@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="RIGHT_TO_LEFT" prefWidth="1200.0" stylesheets="@../resources/styles/theme.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ghirbal.controllers.MainController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="%APP">
+                    <items>
+                        <MenuItem fx:id="quitMI" mnemonicParsing="false" text="%EXIT">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%EDIT">
+                    <items>
+                        <MenuItem fx:id="reloadMI" mnemonicParsing="false" text="%RELOAD_SAVED_DBS">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="forgetMI" mnemonicParsing="false" text="%FORGET_SAVED_DBS">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </MenuItem>
+                        <CheckMenuItem fx:id="saveCMI" mnemonicParsing="false" text="%SAVE_LOADED_ON_CLOSE">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </CheckMenuItem>
+                        <CheckMenuItem fx:id="dbSelectTipCMI" mnemonicParsing="false" text="%SHOW_HELP_WINDOW">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </CheckMenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <CheckMenuItem fx:id="use2DbsCMI" mnemonicParsing="false" text="%DOUBLE_DBS_SEARCH">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </CheckMenuItem>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%QUESTION_MARK">
+                    <items>
+                        <MenuItem fx:id="aboutMI" mnemonicParsing="false" text="%ABOUT">
+                            <graphic>
+                                <Label text="">
+                                    <styleClass>
+                                        <String fx:value="icm" />
+                                        <String fx:value="menu-item-icm" />
+                                    </styleClass>
+                                </Label>
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <VBox maxWidth="1.7976931348623157E308" minHeight="100.0" spacing="12.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Label alignment="CENTER" text="1">
+                            <styleClass>
+                                <String fx:value="icm-24" />
+                                <String fx:value="bold" />
+                                <String fx:value="numero" />
+                            </styleClass>
+                        </Label>
+                        <Label text="%LOADED_DBS">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                            <styleClass>
+                                <String fx:value="body-title" />
+                                <String fx:value="bottom-bar" />
+                            </styleClass>
+                        </Label>
+                        <Button fx:id="addDbBtn" mnemonicParsing="false" text="">
+                            <styleClass>
+                                <String fx:value="icm" />
+                                <String fx:value="btn" />
+                            </styleClass>
+                            <tooltip>
+                                <Tooltip text="%LOAD_OTHER_DB" />
+                            </tooltip>
+                        </Button>
+                        <Button fx:id="deleteDbsBtn" layoutX="167.0" layoutY="17.0" mnemonicParsing="false" text="">
+                            <styleClass>
+                                <String fx:value="icm" />
+                                <String fx:value="btn" />
+                            </styleClass>
+                            <tooltip>
+                                <Tooltip text="%DELETE_LOADED_DBS" />
+                            </tooltip>
+                        </Button>
+                    </children>
+                </HBox>
+                <ScrollPane fx:id="dbsSP" fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="120.0">
+                    <content>
+                        <FlowPane fx:id="dbsFP" hgap="6.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="dbs-pane" vgap="6.0" />
+                    </content>
+                    <VBox.margin>
+                        <Insets left="24.0" right="24.0" />
+                    </VBox.margin>
+                </ScrollPane>
+                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="420.0" spacing="4.0" HBox.hgrow="NEVER">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="2">
+                                            <styleClass>
+                                                <String fx:value="icm-24" />
+                                                <String fx:value="bold" />
+                                                <String fx:value="numero" />
+                                            </styleClass>
+                                        </Label>
+                                        <Label alignment="CENTER" text="%SEARCH_CRITERIA">
+                                            <styleClass>
+                                                <String fx:value="body-title" />
+                                                <String fx:value="bottom-bar" />
+                                            </styleClass>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="4.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <VBox fx:id="dbsSelectVB" maxWidth="1.7976931348623157E308" spacing="4.0">
+                                            <children>
+                                    
+                                                <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%SCHOOL_DB">
+                                                    <VBox.margin>
+                                                        <Insets top="6.0" />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <ComboBox fx:id="dbsCmB" maxWidth="1.7976931348623157E308" styleClass="infos-tf" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </VBox>
+                                        <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%MASSAR_CODE">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <TextField fx:id="massarTF" styleClass="infos-tf" />
+                                        <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%FL_NAMES">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <TextField fx:id="nameTF" styleClass="infos-tf" />
+                                        <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%GENDER">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <HBox spacing="32.0">
+                                            <children>
+                                                <CheckBox fx:id="femaleCB" contentDisplay="RIGHT" mnemonicParsing="false" text="%GIRL">
+                                                    <graphic>
+                                                        <Label styleClass="icm" text="()" />
+                                                    </graphic>
+                                                </CheckBox>
+                                                <CheckBox fx:id="maleCB" contentDisplay="RIGHT" mnemonicParsing="false" text="%BOY">
+                                                    <graphic>
+                                                        <Label styleClass="icm" text="()" />
+                                                    </graphic>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%BIRTH_DATE">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <TextField fx:id="birthDateTF" styleClass="infos-tf" />
+                                        <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%AGE">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                        </Label>
+                                        <HBox spacing="12.0">
+                                            <children>
+                                                <ComboBox fx:id="ageOpCmB" minWidth="64.0" styleClass="infos-tf" />
+                                                <Spinner fx:id="ageSp" editable="true" maxWidth="1.7976931348623157E308" styleClass="infos-tf" HBox.hgrow="ALWAYS" />
+                                            </children>
+                                        </HBox>
+                                        <VBox fx:id="levsSelectVB" maxWidth="1.7976931348623157E308" spacing="4.0">
+                                            <VBox.margin>
+                                                <Insets top="6.0" />
+                                            </VBox.margin>
+                                            <children>
+                                                <Label maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%LEVEL">
+                                                    <VBox.margin>
+                                                        <Insets top="6.0" />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <ComboBox fx:id="levelCmB" maxWidth="1.7976931348623157E308" styleClass="infos-tf" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets left="24.0" />
+                                    </VBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="12.0" right="12.0" />
+                            </padding>
+                        </VBox>
+                        <Label alignment="CENTER" maxHeight="1.7976931348623157E308" minWidth="64.0" styleClass="icm-36" text="">
+                            <padding>
+                                <Insets bottom="12.0" />
+                            </padding>
+                        </Label>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="12.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <VBox fx:id="singleDbResultVB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="12.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                            <children>
+                                                <Label alignment="CENTER" text="3">
+                                                    <styleClass>
+                                                        <String fx:value="icm-24" />
+                                                        <String fx:value="bold" />
+                                                        <String fx:value="numero" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label alignment="CENTER" text="%SEARCH_RESULTS">
+                                                    <styleClass>
+                                                        <String fx:value="body-title" />
+                                                        <String fx:value="bottom-bar" />
+                                                    </styleClass>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets left="100.0" />
+                                            </VBox.margin>
+                                        </HBox>
+                                        <HBox alignment="CENTER" spacing="12.0">
+                                            <children>
+                                                <Label text="%OCCURENCES_SIZE">
+                                                    <styleClass>
+                                                        <String fx:value="p18" />
+                                                        <String fx:value="titleLabel" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label fx:id="foundLbl" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="%NOTHING_SYMBOL_LARGE">
+                                                    <styleClass>
+                                                        <String fx:value="p18" />
+                                                        <String fx:value="bold" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label alignment="CENTER_RIGHT" styleClass="p18" text="|" />
+                                                <Label fx:id="foundGirlsLbl" alignment="CENTER_RIGHT" styleClass="p18" text="%NOTHING_SYMBOL_SMALL">
+                                                    <graphic>
+                                                        <Label styleClass="icm" text="" />
+                                                    </graphic>
+                                                </Label>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                        </HBox>
+                                        <HBox alignment="CENTER" spacing="12.0">
+                                            <children>
+                                                <Label text="%SCHOOL">
+                                                    <styleClass>
+                                                        <String fx:value="p14" />
+                                                        <String fx:value="titleLabel" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label fx:id="foundDbLbl" styleClass="p14" text="%NOTHING_SYMBOL_LARGE" />
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets />
+                                            </VBox.margin>
+                                        </HBox>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                                <Separator maxWidth="400.0" prefWidth="340.0">
+                                                    <padding>
+                                                        <Insets left="24.0" right="24.0" />
+                                                    </padding>
+                                                </Separator>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                            <children>
+                                                <Label text="%MASSAR_CODE">
+                                                    <styleClass>
+                                                        <String fx:value="p18" />
+                                                        <String fx:value="titleLabel" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label fx:id="foundMassarLbl" styleClass="p18" text="%NOTHING_SYMBOL_LARGE" />
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" layoutX="22.0" layoutY="145.0" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                            <children>
+                                                <Label fx:id="foundNameLbl" contentDisplay="RIGHT" graphicTextGap="12.0" text="%NOTHING_SYMBOL_LARGE">
+                                                    <styleClass>
+                                                        <String fx:value="p24" />
+                                                        <String fx:value="bold" />
+                                                    </styleClass>
+                                                    <graphic>
+                                                        <HBox>
+                                                            <children>
+                                                                <Label fx:id="foundGirlLbl" alignment="CENTER_RIGHT" styleClass="icm-16" text="[]" visible="false" />
+                                                                <Label fx:id="foundBoyLbl" alignment="CENTER_RIGHT" styleClass="icm-16" text="[]" visible="false" />
+                                                            </children>
+                                                        </HBox>
+                                                    </graphic>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" layoutX="22.0" layoutY="192.0" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                            <children>
+                                                <Label text="%BIRTH_DATE">
+                                                    <styleClass>
+                                                        <String fx:value="p18" />
+                                                        <String fx:value="titleLabel" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label fx:id="foundBirthLbl" contentDisplay="RIGHT" styleClass="p18" text="%NOTHING_SYMBOL_LARGE">
+                                                    <graphic>
+                                                        <Label fx:id="foundAgeLbl" styleClass="p18" text="%NOTHING_SYMBOL_LARGE" />
+                                                    </graphic>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <StackPane>
+                                                    <children>
+                                                        <Label fx:id="foundGrpLbl" alignment="CENTER" contentDisplay="BOTTOM" text="%NOTHING_SYMBOL_LARGE">
+                                                            <styleClass>
+                                                                <String fx:value="group-name" />
+                                                                <String fx:value="bold" />
+                                                            </styleClass>
+                                                        </Label>
+                                                        <Label fx:id="foundNumeroLbl" alignment="CENTER_RIGHT" styleClass="found-numero" text="%NOTHING_SYMBOL_SMALL" textAlignment="RIGHT" StackPane.alignment="BOTTOM_RIGHT" />
+                                                    </children>
+                                                    <styleClass>
+                                                        <String fx:value="found-group" />
+                                                        <String fx:value="single" />
+                                                    </styleClass>
+                                                </StackPane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                            <children>
+                                                <Button fx:id="firstBtn" disable="true" mnemonicParsing="false" text="">
+                                                    <styleClass>
+                                                        <String fx:value="btn" />
+                                                        <String fx:value="icm-16" />
+                                                    </styleClass>
+                                                    <tooltip>
+                                                        <Tooltip text="%FIRST_OCCURENCE" />
+                                                    </tooltip>
+                                                </Button>
+                                                <Button fx:id="prevBtn" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                    <styleClass>
+                                                        <String fx:value="btn" />
+                                                        <String fx:value="icm-16" />
+                                                    </styleClass>
+                                                    <tooltip>
+                                                        <Tooltip text="%PREVIOUS_OCCURENCE" />
+                                                    </tooltip>
+                                                </Button>
+                                                <Label fx:id="currentLbl" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="64.0" text="%NOTHING_SYMBOL_SMALL">
+                                                    <padding>
+                                                        <Insets left="12.0" right="12.0" />
+                                                    </padding>
+                                                    <styleClass>
+                                                        <String fx:value="p14" />
+                                                        <String fx:value="icm" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Button fx:id="nextBtn" disable="true" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                    <styleClass>
+                                                        <String fx:value="btn" />
+                                                        <String fx:value="icm-16" />
+                                                    </styleClass>
+                                                    <tooltip>
+                                                        <Tooltip text="%NEXT_OCCURENCE" />
+                                                    </tooltip>
+                                                </Button>
+                                                <Button fx:id="lastBtn" disable="true" layoutX="114.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                    <styleClass>
+                                                        <String fx:value="btn" />
+                                                        <String fx:value="icm-16" />
+                                                    </styleClass>
+                                                    <tooltip>
+                                                        <Tooltip text="%LAST_OCCURENCE" />
+                                                    </tooltip>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <padding>
+                                        <Insets left="12.0" right="12.0" />
+                                    </padding>
+                                </VBox>
+                                <VBox fx:id="doubleDbsResultVB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="12.0" VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                            <children>
+                                                <Label alignment="CENTER" text="3">
+                                                    <styleClass>
+                                                        <String fx:value="icm-24" />
+                                                        <String fx:value="bold" />
+                                                        <String fx:value="numero" />
+                                                    </styleClass>
+                                                </Label>
+                                                <Label alignment="CENTER" text="%SEARCH_RESULTS">
+                                                    <styleClass>
+                                                        <String fx:value="body-title" />
+                                                        <String fx:value="bottom-bar" />
+                                                    </styleClass>
+                                                </Label>
+                                            </children>
+                                        </HBox>
+                                        <GridPane VBox.vgrow="ALWAYS">
+                                            <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" hgrow="NEVER" percentWidth="50.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="100.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="12.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <children>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308">
+                                                            <children>
+                                                                <GridPane hgap="12.0" vgap="6.0">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" />
+                                                                        <ColumnConstraints halignment="CENTER" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints valignment="CENTER" />
+                                                                        <RowConstraints valignment="CENTER" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <ComboBox fx:id="dbsCmB1" maxWidth="1.7976931348623157E308" prefWidth="180.0" styleClass="infos-tf" GridPane.columnIndex="1" />
+                                                                        <ComboBox fx:id="levelCmB1" maxWidth="1.7976931348623157E308" prefWidth="180.0" styleClass="infos-tf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%SCHOOL_DB" />
+                                                                        <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%LEVEL" GridPane.rowIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="81.0">
+                                                            <children>
+                                                                <Separator maxWidth="360.0" prefWidth="300.0">
+                                                                    <padding>
+                                                                        <Insets left="24.0" right="24.0" />
+                                                                    </padding>
+                                                                </Separator>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" spacing="12.0">
+                                                            <children>
+                                                                <Label text="%OCCURENCES_SIZE">
+                                                                    <styleClass>
+                                                                        <String fx:value="p14" />
+                                                                        <String fx:value="titleLabel" />
+                                                                    </styleClass>
+                                                                </Label>
+                                                                <Label fx:id="foundLbl1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="%NOTHING_SYMBOL_LARGE">
+                                                                    <styleClass>
+                                                                        <String fx:value="p14" />
+                                                                        <String fx:value="bold" />
+                                                                    </styleClass>
+                                                                </Label>
+                                                                <Label alignment="CENTER_RIGHT" styleClass="p14" text="|" />
+                                                                <Label fx:id="foundGirlsLbl1" alignment="CENTER_RIGHT" styleClass="p14" text="%NOTHING_SYMBOL_SMALL">
+                                                                    <graphic>
+                                                                        <Label styleClass="icm" text="" />
+                                                                    </graphic>
+                                                                </Label>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets />
+                                                            </VBox.margin>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER">
+                                                            <children>
+                                                                <Separator maxWidth="300.0" prefWidth="240.0">
+                                                                    <padding>
+                                                                        <Insets left="24.0" right="24.0" />
+                                                                    </padding>
+                                                                </Separator>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Label styleClass="titleLabel" text="%MASSAR_CODE" />
+                                                                <Label fx:id="foundMassarLbl1" styleClass="p14" text="%NOTHING_SYMBOL_LARGE" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="140.0" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Label fx:id="foundNameLbl1" contentDisplay="RIGHT" graphicTextGap="12.0" text="%NOTHING_SYMBOL_LARGE">
+                                                                    <styleClass>
+                                                                        <String fx:value="p18" />
+                                                                        <String fx:value="bold" />
+                                                                    </styleClass>
+                                                                    <graphic>
+                                                                        <HBox>
+                                                                            <children>
+                                                                                <Label fx:id="foundGirlLbl1" alignment="CENTER_RIGHT" styleClass="icm-16" text="[]" visible="false" />
+                                                                                <Label fx:id="foundBoyLbl1" alignment="CENTER_RIGHT" styleClass="icm-16" text="[]" visible="false" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </graphic>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="400.0" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Label styleClass="titleLabel" text="%BIRTH_DATE" />
+                                                                <Label fx:id="foundBirthLbl1" contentDisplay="RIGHT" styleClass="p14" text="%NOTHING_SYMBOL_LARGE">
+                                                                    <graphic>
+                                                                        <Label fx:id="foundAgeLbl1" styleClass="p14" text="%NOTHING_SYMBOL_LARGE" />
+                                                                    </graphic>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <StackPane>
+                                                                    <children>
+                                                                        <Label fx:id="foundGrpLbl1" alignment="CENTER" text="%NOTHING_SYMBOL_LARGE">
+                                                                            <styleClass>
+                                                                                <String fx:value="group-name" />
+                                                                                <String fx:value="bold" />
+                                                                            </styleClass>
+                                                                        </Label>
+                                                                        <Label fx:id="foundNumeroLbl1" styleClass="found-numero" text="%NOTHING_SYMBOL_SMALL" StackPane.alignment="BOTTOM_RIGHT" />
+                                                                    </children>
+                                                                    <styleClass>
+                                                                        <String fx:value="found-group" />
+                                                                        <String fx:value="double" />
+                                                                    </styleClass>
+                                                                </StackPane>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Button fx:id="firstBtn1" disable="true" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%FIRST_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                                <Button fx:id="prevBtn1" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%PREVIOUS_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                                <Label fx:id="currentLbl1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="64.0" text="%NOTHING_SYMBOL_SMALL">
+                                                                    <padding>
+                                                                        <Insets left="12.0" right="12.0" />
+                                                                    </padding>
+                                                                    <styleClass>
+                                                                        <String fx:value="p14" />
+                                                                        <String fx:value="icm" />
+                                                                    </styleClass>
+                                                                </Label>
+                                                                <Button fx:id="nextBtn1" disable="true" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%NEXT_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                                <Button fx:id="lastBtn1" disable="true" layoutX="114.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%LAST_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                                <Separator maxHeight="1.7976931348623157E308" orientation="VERTICAL" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <GridPane.margin>
+                                                        <Insets bottom="24.0" top="24.0" />
+                                                    </GridPane.margin>
+                                                    <padding>
+                                                        <Insets bottom="12.0" top="12.0" />
+                                                    </padding>
+                                                </Separator>
+                                                <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="12.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                                    <children>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308">
+                                                            <children>
+                                                                <GridPane hgap="12.0" vgap="6.0">
+                                                                    <columnConstraints>
+                                                                        <ColumnConstraints halignment="CENTER" />
+                                                                        <ColumnConstraints halignment="CENTER" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                        <RowConstraints valignment="CENTER" />
+                                                                        <RowConstraints valignment="CENTER" />
+                                                                    </rowConstraints>
+                                                                    <children>
+                                                                        <ComboBox fx:id="dbsCmB2" maxWidth="1.7976931348623157E308" prefWidth="180.0" styleClass="infos-tf" GridPane.columnIndex="1" />
+                                                                        <ComboBox fx:id="levelCmB2" maxWidth="1.7976931348623157E308" prefWidth="180.0" styleClass="infos-tf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                                        <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%SCHOOL_DB" />
+                                                                        <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="%LEVEL" GridPane.rowIndex="1" />
+                                                                    </children>
+                                                                </GridPane>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="81.0">
+                                                            <children>
+                                                                <Separator maxWidth="360.0" prefWidth="300.0">
+                                                                    <padding>
+                                                                        <Insets left="24.0" right="24.0" />
+                                                                    </padding>
+                                                                </Separator>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" spacing="12.0">
+                                                            <children>
+                                                                <Label text="%OCCURENCES_SIZE">
+                                                                    <styleClass>
+                                                                        <String fx:value="p14" />
+                                                                        <String fx:value="titleLabel" />
+                                                                    </styleClass>
+                                                                </Label>
+                                                                <Label fx:id="foundLbl2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="%NOTHING_SYMBOL_LARGE">
+                                                                    <styleClass>
+                                                                        <String fx:value="p14" />
+                                                                        <String fx:value="bold" />
+                                                                    </styleClass>
+                                                                </Label>
+                                                                <Label alignment="CENTER_RIGHT" styleClass="p14" text="|" />
+                                                                <Label fx:id="foundGirlsLbl2" alignment="CENTER_RIGHT" styleClass="p14" text="%NOTHING_SYMBOL_SMALL">
+                                                                    <graphic>
+                                                                        <Label styleClass="icm" text="" />
+                                                                    </graphic>
+                                                                </Label>
+                                                            </children>
+                                                            <VBox.margin>
+                                                                <Insets />
+                                                            </VBox.margin>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER">
+                                                            <children>
+                                                                <Separator maxWidth="300.0" prefWidth="240.0">
+                                                                    <padding>
+                                                                        <Insets left="24.0" right="24.0" />
+                                                                    </padding>
+                                                                </Separator>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Label styleClass="titleLabel" text="%MASSAR_CODE" />
+                                                                <Label fx:id="foundMassarLbl2" styleClass="p14" text="%NOTHING_SYMBOL_LARGE" />
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Label fx:id="foundNameLbl2" contentDisplay="RIGHT" graphicTextGap="12.0" text="%NOTHING_SYMBOL_LARGE">
+                                                                    <styleClass>
+                                                                        <String fx:value="p18" />
+                                                                        <String fx:value="bold" />
+                                                                    </styleClass>
+                                                                    <graphic>
+                                                                        <HBox>
+                                                                            <children>
+                                                                                <Label fx:id="foundGirlLbl2" alignment="CENTER_RIGHT" styleClass="icm-16" text="[]" visible="false" />
+                                                                                <Label fx:id="foundBoyLbl2" alignment="CENTER_RIGHT" styleClass="icm-16" text="[]" visible="false" />
+                                                                            </children>
+                                                                        </HBox>
+                                                                    </graphic>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" layoutX="10.0" layoutY="211.0" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Label styleClass="titleLabel" text="%BIRTH_DATE" />
+                                                                <Label fx:id="foundBirthLbl2" contentDisplay="RIGHT" styleClass="p14" text="%NOTHING_SYMBOL_LARGE">
+                                                                    <graphic>
+                                                                        <Label fx:id="foundAgeLbl2" styleClass="p14" text="%NOTHING_SYMBOL_LARGE" />
+                                                                    </graphic>
+                                                                </Label>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                                                            <children>
+                                                                <StackPane>
+                                                                    <children>
+                                                                        <Label fx:id="foundGrpLbl2" alignment="CENTER" text="%NOTHING_SYMBOL_LARGE">
+                                                                            <styleClass>
+                                                                                <String fx:value="group-name" />
+                                                                                <String fx:value="bold" />
+                                                                            </styleClass>
+                                                                        </Label>
+                                                                        <Label fx:id="foundNumeroLbl2" styleClass="found-numero" text="%NOTHING_SYMBOL_SMALL" StackPane.alignment="BOTTOM_RIGHT" />
+                                                                    </children>
+                                                                    <styleClass>
+                                                                        <String fx:value="found-group" />
+                                                                        <String fx:value="double" />
+                                                                    </styleClass>
+                                                                </StackPane>
+                                                            </children>
+                                                        </HBox>
+                                                        <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="6.0">
+                                                            <children>
+                                                                <Button fx:id="firstBtn2" disable="true" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%FIRST_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                                <Button fx:id="prevBtn2" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%PREVIOUS_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                                <Label fx:id="currentLbl2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="64.0" text="%NOTHING_SYMBOL_SMALL">
+                                                                    <padding>
+                                                                        <Insets left="12.0" right="12.0" />
+                                                                    </padding>
+                                                                    <styleClass>
+                                                                        <String fx:value="p14" />
+                                                                        <String fx:value="icm" />
+                                                                    </styleClass>
+                                                                </Label>
+                                                                <Button fx:id="nextBtn2" disable="true" layoutX="62.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%NEXT_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                                <Button fx:id="lastBtn2" disable="true" layoutX="114.0" layoutY="10.0" mnemonicParsing="false" text="">
+                                                                    <styleClass>
+                                                                        <String fx:value="btn" />
+                                                                        <String fx:value="icm-16" />
+                                                                    </styleClass>
+                                                                    <tooltip>
+                                                                        <Tooltip text="%LAST_OCCURENCE" />
+                                                                    </tooltip>
+                                                                </Button>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                    <padding>
+                                        <Insets left="12.0" right="12.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="12.0" left="12.0" right="12.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+        </VBox>
+        <HBox minHeight="12.0" VBox.vgrow="NEVER" />
+    </children>
+</VBox>
